@@ -12,6 +12,10 @@ class Todo {
   List<Task> tasks;
   IconData icon;
 
+  addTask({title}) {
+    tasks.insert(0, Task(title: title));
+  }
+
   String explainCompleted() {
     return "${completedTasksCount()}/${tasks.length}";
   }
@@ -51,6 +55,16 @@ List<Todo> defaultTodos = [
     tasks: [
       Task(title: 'Clean house', completed: false),
       Task(title: 'Study a little bit', completed: true),
+      Task(title: 'Goto city hall', completed: true),
+      Task(title: 'Pay tax', completed: true),
+      Task(title: 'Buy vacuum machine', completed: true),
+      Task(title: 'Invite friends to party', completed: true),
+      Task(title: 'Say hi to neighbors', completed: true),
+      Task(title: 'Feed cats', completed: true),
+      Task(title: 'Sleep well', completed: true),
+      Task(title: 'Send mail to mom', completed: true),
+      Task(title: 'Learn hi-five', completed: true),
+      Task(title: 'Read cook book', completed: true),
     ],
   ),
   Todo(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextStyle {
+class C_TextStyle {
   static final baseTextStyle = TextStyle();
 
   static final regularTitle = baseTextStyle.copyWith(
-    fontSize: 14.0,
+    fontSize: 18.0,
     fontWeight: FontWeight.w600,
   );
 
