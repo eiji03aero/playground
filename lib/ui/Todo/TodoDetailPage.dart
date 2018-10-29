@@ -15,6 +15,7 @@ class TodoDetailPage extends StatefulWidget {
 
 class _TodoDetailPageState extends State<TodoDetailPage> {
   Todo todo;
+  bool filterCompleted = true;
 
   @override
   void initState() {
@@ -41,6 +42,9 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
       todo.addTask(title: title);
     });
   }
+
+  void handleToggleFilterCompleted() =>
+      setState(() => filterCompleted = !filterCompleted);
 
   @override
   Widget build(BuildContext context) {
@@ -95,15 +99,17 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
             ),
             Padding(padding: EdgeInsets.only(left: 32.0)),
             RaisedButton(
-              onPressed: () {
-                print('domo');
-              },
+              onPressed: () => handleToggleFilterCompleted(),
               color: Colors.orange,
-              child:
-                  Text('View history', style: TextStyle(color: Colors.white)),
+              child: Text(filterCompleted ? 'View all' : 'Hide completed',
+                  style: TextStyle(color: Colors.white)),
             ),
           ],
         ));
+
+    final tasks = filterCompleted
+        ? todo.tasks.where((task) => !task.completed).toList()
+        : todo.tasks;
 
     final detailPageContent = Column(
       children: [
@@ -112,9 +118,9 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
         Expanded(
           child: ListView.builder(
             padding: EdgeInsets.all(8.0),
-            itemCount: todo.tasks.length,
+            itemCount: tasks.length,
             itemBuilder: (context, index) {
-              Task task = todo.tasks[index];
+              Task task = tasks[index];
               return ListTile(
                 leading: Checkbox(
                   value: task.completed,
