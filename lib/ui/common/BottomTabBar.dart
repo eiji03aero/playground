@@ -16,6 +16,10 @@ class BottomTabBar extends StatelessWidget {
             icon: Icon(Icons.developer_board),
             text: 'Todos',
           ),
+          Tab(
+            icon: Icon(Icons.library_music),
+            text: 'Music',
+          ),
         ],
       ),
     );

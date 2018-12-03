@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:playground/ui/common/BottomTabBar.dart';
 import 'package:playground/ui/Todo/TodoPage.dart';
+import 'package:playground/ui/Music/MusicPage.dart';
+import 'package:playground/ui/common/BottomTabBar.dart';
 
 void main() => runApp(new MyApp());
 
@@ -14,7 +15,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    _tcontroller = TabController(length: 5, vsync: this);
+    _tcontroller = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           controller: _tcontroller,
           children: [
             TodoPage(),
+            MusicPage(),
           ],
         ),
         bottomNavigationBar: BottomTabBar(controller: _tcontroller),
